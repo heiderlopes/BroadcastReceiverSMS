@@ -24,6 +24,12 @@ public class SMSActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sms);
         tvMessage = (TextView) findViewById(R.id.tvMessage);
 
+        if(getIntent() != null) {
+            Intent i = getIntent();
+            String remetente = i.getStringExtra("remetente");
+            String mensagem = i.getStringExtra("mensagem");
+            tvMessage.setText(remetente == null && mensagem ==null ? "" : remetente + " : " + mensagem);
+        }
         requestSmsPermission();
     }
 
